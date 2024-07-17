@@ -1,0 +1,39 @@
+   // console.log(Remove_Jobs);
+      // for (const iterator of Remove_Jobs) {
+      //   if (job_id._id == iterator._id) {
+      //     const indexToDelete = Remove_Jobs!.indexOf(iterator);
+      //     console.log(indexToDelete);
+      //     if (indexToDelete > -1) {
+      //       Remove_Jobs.splice(indexToDelete, 1);
+      //       console.log(Remove_Jobs);
+      //       break;
+      //     }
+      //   }
+      // }
+
+      
+  {/* <div className=" w-full flex justify-between items-center">
+            <div className="flex flex-col ">
+              <span className="font-semibold text-sm max-lg:text-lg max-lg:font-medium">
+               
+              </span>
+            </div>
+            <div>
+              <Link to={"/change-password"}>
+                <AiFillEdit className="text-2xl" />
+              </Link>
+            </div>
+          </div>
+          <div className=" w-full flex justify-between items-center">
+            <div className="flex flex-col ">
+              <span className="font-semibold text-sm max-lg:text-lg max-lg:font-medium">
+               
+              </span>
+              <span className="w-[90%] text-sm font-normal text-ellipsis overflow-hidden whitespace-nowrap">
+                08141393379
+              </span>
+            </div>
+            <div>
+              <AiFillEdit className="text-2xl" />
+            </div>
+          </div> */} 

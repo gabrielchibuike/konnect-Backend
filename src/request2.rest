@@ -1,0 +1,69 @@
+###
+POST http://localhost:5000/createJobs
+Content-Type: application/json
+
+{
+   "Job_Title": "Flight Attendant",
+   "Company_Name": "Venture Garden Group",
+   "State":"Lagos",
+   "Salary": "$75,000 a month",
+   "Job_Type": "onsite",
+   "Description": "The Role we are seeking a highly skilled and motivated Frontend Developer to join our dynamic team. The ideal candidate will have a deep understanding of modern web development technologies and best practices, with a strong focus on creating seamless, responsive, and intuitive user interfaces. Key Responsibilities Design, develop, and maintain highly responsive web-based applications using React. Leverage React Native for the development of cross-platform mobile applications. .",
+   "Required_Expericence": "No Experience",
+   "Job_Category": "Hosipitality",
+   "Job_Location": "ikeja,lagos",
+   "Date_Posted": "Active 22days ago"
+  }
+
+
+###
+GET http://localhost:5000/api/allJobs
+Content-Type: application/json
+x-auth-token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImdhYnJpZWxud2FndTIwMDJAZ21haWwuY29tIiwiaWF0IjoxNzA5ODI0MjA3LCJleHAiOjE3MDk4MjQyNjd9.MVmjfbHUEanqx0LvGcNhrkiC7RSqrMQtwTeHoc_ue5k"
+
+###
+GET http://localhost:5000/api/allJobs/65d6148bd6ca4efffd2de005
+Content-Type: application/json
+x-auth-token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImdhYnJpZWxud2FndTIwMDJAZ21haWwuY29tIiwiaWF0IjoxNzA5ODI0MjA3LCJleHAiOjE3MDk4MjQyNjd9.MVmjfbHUEanqx0LvGcNhrkiC7RSqrMQtwTeHoc_ue5k"
+
+###
+POST http://localhost:5000/api/search-jobs?Job_Type=Contract
+Content-Type: application/json
+
+###
+POST http://localhost:5000/api/save-jobs/660c4ca45c095a1c50a1e2f3
+Content-Type: application/json
+
+{
+  "_id": "65d61b12d4d43f69fcc3bbbe",
+  "Job_Title": "Full Stack Software Developer",
+  "Company_Name": "MicroSoft Inc",
+  "State": "Lagos",
+  "Salary": "$240,000 a month",
+  "Job_Type": "Remote",
+  "Description": "The Role we are seeking a highly skilled and motivated Frontend Developer to join our dynamic team. The ideal candidate will have a deep understanding of modern web development technologies and best practices, with a strong focus on creating seamless, responsive, and intuitive user interfaces. Key Responsibilities Design, develop, and maintain highly responsive web-based applications using React. Leverage React Native for the development of cross-platform mobile applications. .",
+  "Required_Expericence": "Mid-level",
+  "Job_Category": "Tech",
+  "Job_Location": "Victoria Island Lagos",
+  "Date_Posted": "Posted 2days ago",
+  "date_added": {
+    "$date": "2024-02-21T15:18:09.392Z"
+  }
+}
+
+###
+GET http://localhost:5000/api/read-jobs/660c4ca45c095a1c50a1e2f3
+Content-Type: application/json
+
+###
+DELETE  http://localhost:5000/api/remove-jobs/660c4ca45c095a1c50a1e2f3
+Content-Type: application/json
+
+{
+  "_id": "65d6148bd6ca4efffd2de005"
+}
+
+###
+GET http://localhost:5000/api/filter-jobs?Location=lagos
+Content-Type: application/json
+
