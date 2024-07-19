@@ -27,21 +27,31 @@ const app = express();
 //
 
 // connetion to database
-mongoose.connect("mongodb://localhost:27017/JobSearch");
+const mongodbUrl = process.env.DATABASE;
+mongoose
+  .connect(mongodbUrl as string)
+  .then(() => {
+    console.log("Connected to MongoDB");
+  })
+  .catch((err) => {
+    console.error("Error connecting to MongoDB:", err);
+  });
 
-app.use(cors());
+const corsOptions = {
+  origin: "https://konnect-ghtn.onrender.com",
+  methods: ["GET", "POST"],
+};
+
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("src/uploads"));
 
-
 app.use("/api/access", user_route);
-app.use("/api",verifyJwt, JobFeedRoute);
+app.use("/api", verifyJwt, JobFeedRoute);
 app.use("/api", verifyJwt, handleApp);
 app.use("/api", verifyJwt, EditRoute);
 app.use("/api", verifyJwt, SavedJobRoute);
-
-
 
 app.listen(process.env.PORT, async () => {
   try {
