@@ -40,10 +40,9 @@ mongoose
 const corsOptions = {
   origin: "https://konnect-ghtn.onrender.com",
   methods: ["GET", "POST"],
-  allowedHeaders: ["Content-Type", "Authorization"],
 };
 
-app.use(cors(corsOptions));
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("src/uploads"));
