@@ -54,7 +54,7 @@ app.use("/api", verifyJwt, handleApp);
 app.use("/api", verifyJwt, EditRoute);
 app.use("/api", verifyJwt, SavedJobRoute);
 
-app.listen(process.env.PORT, async () => {
+app.listen(process.env.PORT || 5000, async () => {
   try {
     console.log("server is running on port " + process.env.PORT);
   } catch (err) {
