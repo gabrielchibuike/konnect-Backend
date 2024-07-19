@@ -30,6 +30,8 @@ route.post("/create_user", async (req: Request, res: Response) => {
       process.env.ACCESS_TOKEN_PRIVATE_KEY!,
       { expiresIn: "1hrs" }
     );
+    console.log("vgvg");
+
     res.status(200).send(AccessToken);
   } catch (err) {
     console.log(err);
@@ -53,11 +55,11 @@ route.post("/more_user_info", async (req: Request, res: Response) => {
       { firstName, lastName, state, postal_code, desired_jobs },
       { new: true }
     );
-     const AccessToken = jwt.sign(
-       { _id: id, email: email, firstName, lastName, desired_jobs },
-       process.env.ACCESS_TOKEN_PRIVATE_KEY!,
-       { expiresIn: "1hrs" }
-     );
+    const AccessToken = jwt.sign(
+      { _id: id, email: email, firstName, lastName, desired_jobs },
+      process.env.ACCESS_TOKEN_PRIVATE_KEY!,
+      { expiresIn: "1hrs" }
+    );
     res.status(200).send(AccessToken);
   } catch (err) {
     res.status(500).send("Server Error!!");
