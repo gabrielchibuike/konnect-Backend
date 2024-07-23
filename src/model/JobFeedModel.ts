@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 const JobsFeed = new mongoose.Schema({
   JobTitle: { type: String, required: true, minlength: 3, maxlength: 50 },
   Company: { type: String, required: true, minlength: 3, maxlength: 50 },
+  Category: { type: String, required: true, minlength: 3, maxlength: 50 },
   JobLocation: { type: String, required: true, minlength: 3, maxlength: 50 },
   JobType: { type: String, required: true, minlength: 3, maxlength: 50 },
   Description: { type: String, required: true },

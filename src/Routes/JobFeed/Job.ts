@@ -53,6 +53,19 @@ JobFeedRoute.get("/allJobs/:_id", async (req: Request, res: Response) => {
   }
 });
 
+JobFeedRoute.get("/allcategory/:category", async (req: Request, res: Response) => {
+  try {
+    const { category } = req.params;
+    const Feed = await JobFeedTable.find({ Category : category });
+    if (Feed.length == 0) return res.status(500).send("Server Error!!");
+    console.log(Feed);
+    return res.status(200).send(Feed);
+    
+  } catch (err) {
+    console.log(err);
+  }
+});
+
 JobFeedRoute.post("/search-jobs", async (req: Request, res: Response) => {
   const { Jobs, Location, Job_Type, workPlaceType } = req.query;
   // const { error } = jobPrefrenceSchema.validate({ Jobs });

@@ -28,6 +28,7 @@ const app = express();
 
 // connetion to database
 const mongodbUrl = process.env.DATABASE;
+// const mongodbUrl = "mongodb://localhost:27017/JobSearch";
 mongoose
   .connect(mongodbUrl as string)
   .then(() => {
@@ -55,7 +56,7 @@ app.use("/api", verifyJwt, SavedJobRoute);
 
 app.listen(process.env.PORT || 5000, async () => {
   try {
-    console.log("server is running on port " + process.env.PORT);
+    console.log("server is running on port " + process.env.PORT || 5000);
   } catch (err) {
     console.log(err);
   }

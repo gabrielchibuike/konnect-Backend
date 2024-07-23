@@ -4,6 +4,7 @@ import { UserDocument } from "../../Interface/user_interface";
 import User from "../../model/user";
 import jwt from "jsonwebtoken";
 import { verifyJwt } from "../../utils/verifyJwt";
+import sha1 from "sha1";
 import {
   createAccSchema,
   loginSchema,
@@ -16,6 +17,7 @@ import generateEmail from "../../utils/generate_Email";
 route.post("/create_user", async (req: Request, res: Response) => {
   const { email, password }: UserDocument = req.body;
   try {
+    const hashedPassword = sha1(password);
     const { error } = createAccSchema.validate({
       email,
       password,
@@ -24,7 +26,7 @@ route.post("/create_user", async (req: Request, res: Response) => {
     const existingUser = await User.findOne({ email });
     if (existingUser)
       return res.status(409).send("User already exist on database");
-    const result = await User.create({ email, password });
+    const result = await User.create({ email, password: hashedPassword });
     const AccessToken = jwt.sign(
       { id: result._id, email: email },
       process.env.ACCESS_TOKEN_PRIVATE_KEY!,
@@ -70,6 +72,7 @@ route.post("/more_user_info", async (req: Request, res: Response) => {
 route.post("/login", async (req: Request, res: Response) => {
   const { email, password }: UserDocument = req.body;
   const existingUser = await User.findOne({ email });
+  const hashedPassword = sha1(password);
   if (!existingUser) return res.status(404).send("User not found on database");
   const getUserdetails = await User.findOne({ email });
   const userId = getUserdetails?._id;
@@ -77,7 +80,7 @@ route.post("/login", async (req: Request, res: Response) => {
   const lastName = getUserdetails?.lastName;
   const desired_jobs = getUserdetails?.desired_jobs;
   try {
-    const response = await User.findOne({ email, password });
+    const response = await User.findOne({ email, password: hashedPassword });
     const AccessToken = jwt.sign(
       { id: userId, email: email, firstName, lastName, desired_jobs },
       process.env.ACCESS_TOKEN_PRIVATE_KEY!,
@@ -107,9 +110,10 @@ route.post(
   verifyJwt,
   async (req: Request, res: Response) => {
     const { email, password }: UserDocument = req.body;
+    const hashedPassword = sha1(password);
     const query = await User.findOneAndUpdate(
       { email: email },
-      { password: password },
+      { password: hashedPassword },
       { new: true }
     );
     if (query) {
