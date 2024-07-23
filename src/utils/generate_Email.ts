@@ -10,7 +10,7 @@ const generateEmail = async (res: Response, email: string) => {
     { expiresIn: "15m" }
   );
   try {
-    const link = `https://https:/konnect-ghtn.onrender.com/reset-password?token=${ResetPasswordToken}`;
+    const link = `https:/konnect-ghtn.onrender.com/reset-password?token=${ResetPasswordToken}`;
     const transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
