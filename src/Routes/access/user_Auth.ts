@@ -27,12 +27,12 @@ route.post("/create_user", async (req: Request, res: Response) => {
     if (existingUser)
       return res.status(409).send("User already exist on database");
     const result = await User.create({ email, password: hashedPassword });
-    // const AccessToken = jwt.sign(
-    //   { id: result._id, email: email },
-    //   process.env.ACCESS_TOKEN_PRIVATE_KEY!,
-    //   { expiresIn: "1hrs" }
-    // );
-    res.status(200).send("Account Created Successfully!!");
+    const AccessToken = jwt.sign(
+      { id: result._id, email: email },
+      process.env.ACCESS_TOKEN_PRIVATE_KEY!,
+      { expiresIn: "1hrs" }
+    );
+    res.status(200).send(AccessToken);
   } catch (err) {
     console.log(err);
   }
