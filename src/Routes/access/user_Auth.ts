@@ -80,7 +80,7 @@ route.post("/login", async (req: Request, res: Response) => {
   try {
     const response = await User.findOne({ email, password: hashedPassword });
     const AccessToken = jwt.sign(
-      { id: userId, email: email, firstName, lastName, desired_jobs },
+      { _id: userId, email: email, firstName, lastName, desired_jobs },
       process.env.ACCESS_TOKEN_PRIVATE_KEY!,
       { expiresIn: "1d" }
     );
