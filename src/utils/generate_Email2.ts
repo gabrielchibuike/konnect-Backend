@@ -18,8 +18,8 @@ const generateEmail2 = async (
       },
     });
 
-    const link = `http://localhost:5173/review-application?id=${jobId}`;
-    const html = `<button className="p-3 w-10"> <a href = ${link}>Review Application</a>.</button>`;
+    const link = `https://konnect-ghtn.onrender.com/review-application?id=${jobId}`;
+    const html = `<button className="p-3 w-10 bg-blue-700 text-white"> <a href = ${link}>Review Application</a>.</button>`;
     const mailOptions = {
       from: `${senderEmail}`,
       to: `${recieverEmail}`,
