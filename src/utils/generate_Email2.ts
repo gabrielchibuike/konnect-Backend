@@ -18,7 +18,7 @@ const generateEmail2 = async (
       },
     });
 
-    const link = `https://konnect-ghtn.onrender.com/review-application?id=${jobId}`;
+    const link = `https://konnect-xi.vercel.app/review-application?id=${jobId}`;
     const html = `<button className="p-3 w-10 bg-blue-700 text-white"> <a href = ${link}>Review Application</a>.</button>`;
     const mailOptions = {
       from: `${senderEmail}`,
